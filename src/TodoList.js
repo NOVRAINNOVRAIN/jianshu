@@ -25,6 +25,9 @@ class TodoList extends React.Component {
             inputVal: event.target.value
         })
     }
+    handleItemClick(index) {
+        console.log(index)
+    }
 
     render () {
         return (
@@ -37,7 +40,7 @@ class TodoList extends React.Component {
                    {
                        this.state.list.map((item) => {
                            return (
-                               <li key={item.id}>{item.text}</li>
+                               <li key={item.id} onClick={this.handleItemClick.bind(this,item.id)}>{item.text}</li>
                            )
                        })
                    }
