@@ -4,10 +4,7 @@ class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [
-                {id: 1,text: 'learn vue'},
-                {id: 2,text: 'learn react'}
-            ],
+            list: ['learn vue', 'learn react'],
             inputVal: ''
         }
     }
@@ -15,7 +12,7 @@ class TodoList extends React.Component {
     handleBtnClick(){
         let list = this.state.list;
         this.setState({
-            list: [...this.state.list, {id: 3,text: this.state.inputVal}],
+            list: [...this.state.list, this.state.inputVal],
             inputVal: ''
         })
     }
@@ -26,7 +23,9 @@ class TodoList extends React.Component {
         })
     }
     handleItemClick(index) {
-        console.log(index)
+        const list = this.state.list;
+        list.splice(index,1);
+        this.setState({list});
     }
 
     render () {
@@ -38,9 +37,9 @@ class TodoList extends React.Component {
                 </div>
                 <ul>
                    {
-                       this.state.list.map((item) => {
+                       this.state.list.map((item,index) => {
                            return (
-                               <li key={item.id} onClick={this.handleItemClick.bind(this,item.id)}>{item.text}</li>
+                               <li key={index} onClick={this.handleItemClick.bind(this,index)}>{item}</li>
                            )
                        })
                    }
