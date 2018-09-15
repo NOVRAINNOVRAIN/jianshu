@@ -21,9 +21,9 @@ class TodoList extends React.Component {
         })
     }
 
-    handleInputChange = (event) => {
+    handleInputChange = (eve) => {
         this.setState({
-            inputVal: event.target.value
+            inputVal: eve.target.value
         })
     }
 
