@@ -8,12 +8,12 @@ class TodoList extends React.Component {
             list: ['learn vue', 'learn react'],
             inputVal: ''
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleBtnClick = this.handleBtnClick.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
+        // this.handleBtnClick = this.handleBtnClick.bind(this);
+        // this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleBtnClick(){
+    handleBtnClick= () =>{
         let list = this.state.list;
         this.setState({
             list: [...list, this.state.inputVal],
@@ -21,18 +21,13 @@ class TodoList extends React.Component {
         })
     }
 
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         this.setState({
             inputVal: event.target.value
         })
     }
-    handleItemClick(index) {
-        const list = this.state.list;
-        list.splice(index,1);
-        this.setState({list});
-    }
 
-    handleDelete(index) {
+    handleDelete = (index) => {
         const list = this.state.list;
         list.splice(index, 1);
         this.setState({list})
