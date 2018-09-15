@@ -1,4 +1,5 @@
-import React from  'react'
+import React from  'react';
+import TodoItem from './TodoItem';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -7,12 +8,15 @@ class TodoList extends React.Component {
             list: ['learn vue', 'learn react'],
             inputVal: ''
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleBtnClick = this.handleBtnClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleBtnClick(){
         let list = this.state.list;
         this.setState({
-            list: [...this.state.list, this.state.inputVal],
+            list: [...list, this.state.inputVal],
             inputVal: ''
         })
     }
@@ -28,21 +32,36 @@ class TodoList extends React.Component {
         this.setState({list});
     }
 
+    handleDelete(index) {
+        const list = this.state.list;
+        list.splice(index, 1);
+        this.setState({list})
+    }
+
+    getTodoItems () {
+       return (
+        this.state.list.map((item,index) => {  
+            return (
+                <TodoItem 
+                    key={index} 
+                    content={item} 
+                    index={index} 
+                    del={this.handleDelete}
+                />
+            )
+        })
+       )
+    }
+
     render () {
         return (
             <div>
                 <div>
-                    <input value={this.state.inputVal} type="text" onChange={this.handleInputChange.bind(this)}/>
-                    <button onClick={this.handleBtnClick.bind(this)}>add+</button>
+                    <input value={this.state.inputVal} type="text" onChange={this.handleInputChange}/>
+                    <button onClick={this.handleBtnClick}>add+</button>
                 </div>
                 <ul>
-                   {
-                       this.state.list.map((item,index) => {
-                           return (
-                               <li key={index} onClick={this.handleItemClick.bind(this,index)}>{item}</li>
-                           )
-                       })
-                   }
+                   {this.getTodoItems()}
                 </ul>
             </div>
         )
