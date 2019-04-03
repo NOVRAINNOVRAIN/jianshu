@@ -15,10 +15,11 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { content, test } = this.props 
+    const { content } = this.props 
     return (
-      <li onClick={this.handleClick}>
-        {test} -  {content.text}
+      <li 
+        onClick={this.handleClick}
+        dangerouslySetInnerHTML={{__html: content.text}}>
       </li>
     )
   }
@@ -31,8 +32,5 @@ TodoItem.propTypes = {
   handleItemDel: PropTypes.func
 } 
 
-TodoItem.defaultProps = {
-  test: 're'
-}
 
 export default TodoItem

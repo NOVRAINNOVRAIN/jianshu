@@ -5,7 +5,7 @@ import './style.css'
 class TodoList extends Component {
   constructor(props) {
     super(props)
-    this.state = { inputVal: '', list: [{text: 'a', id: 1}, {text: 'b', id: 2}] }
+    this.state = { inputVal: '', list: [], id: 0 }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleListItemDel = this.handleListItemDel.bind(this)
@@ -21,7 +21,7 @@ class TodoList extends Component {
   handleSubmit(e) {
     if(!this.state.inputVal) { return false }
     this.setState((prevState, props) => ({
-      list: [...prevState.list, {text: prevState.inputVal, id: parseInt(prevState.list.length)+1}],
+      list: [...prevState.list, {text: prevState.inputVal, id: prevState.id++}],
       inputVal: ''
     }))
   }
