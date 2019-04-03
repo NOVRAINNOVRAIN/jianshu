@@ -14,6 +14,10 @@ class TodoItem extends Component {
     handleItemDel(index)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return true
+  }
+
   render() {
     const { content } = this.props 
     return (

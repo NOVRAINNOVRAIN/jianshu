@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import axios from 'axios'
 import TodoItem from './TodoItem'
 import './style.css'
 
@@ -32,6 +33,18 @@ class TodoList extends Component {
       list.splice(index, 1)
       return { list }
     })
+  }
+
+  componentDidMount() {
+    axios.get('https://easy-mock.com/mock/5ca47d2fac5abe5a8d89b977/react/api/todolist')
+      .then((res) => {
+        this.setState(() => ({
+          list: [...res.data.data]
+        }))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   getTodoItem() {
