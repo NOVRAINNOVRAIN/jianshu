@@ -29,6 +29,14 @@ class TodoList extends Component {
     store.dispatch(action)
   }
 
+  handleItemDel(index) {
+    const action = { 
+      type: 'del_todo_item',
+      index
+    }
+    store.dispatch(action)
+  }
+
   handleStoreChange() {
     this.setState(store.getState())
   }
@@ -48,7 +56,7 @@ class TodoList extends Component {
           style={{width: "400px", margin: "10px 0"}}
           bordered
           dataSource={this.state.list}
-          renderItem={item => (<List.Item>{item}</List.Item>)}>
+          renderItem={(item, index) => (<List.Item onClick={this.handleItemDel.bind(this, index)}>{item}</List.Item>)}>
         </List>
       </div>
     )

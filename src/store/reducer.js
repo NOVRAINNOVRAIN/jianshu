@@ -1,6 +1,6 @@
 const defaultState = {
-  inputVal: 'react',
-  list: ['antd', 'redux', 'reducer', 'store']
+  inputVal: '',
+  list: []
 }
 
 // reducer可以接收state,但绝不能修改state
@@ -13,6 +13,10 @@ export default (prevState = defaultState, action) => {
     const newState = {...prevState}
     newState.list.push(action.value)
     newState.inputVal = ''
+    return newState
+  } else if (action.type === 'del_todo_item') {
+    const newState = {...prevState}
+    newState.list.splice(action.index, 1)
     return newState
   }
   return prevState
