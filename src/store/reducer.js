@@ -1,27 +1,22 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DEL_TODO_ITEM, INIT_TODO_LIST } from './actionTypes'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DEL_TODO_ITEM } from './actionTypes'
 
 const defaultState = {
   inputVal: '',
   list: []
 }
 
-// reducer可以接收state,但绝不能修改state
-function todo(prevState = defaultState, action) {  
+function todo(prevState=defaultState, action) {
   if(action.type === CHANGE_INPUT_VALUE) {
-    const newState = {...prevState, ...action.value}
-    newState.inputVal = action.value
+    const newState = {...prevState, ...{inputVal: action.value}}
     return newState
-  } else if (action.type === ADD_TODO_ITEM) {
+  } else if (action.type === ADD_TODO_ITEM ) {
     const newState = {...prevState}
-    newState.list.push(action.value)
+    newState.list.push(prevState.inputVal)
     newState.inputVal = ''
     return newState
   } else if (action.type === DEL_TODO_ITEM) {
-    const newState = {...prevState}
-    newState.list.splice(action.index, 1)
-    return newState
-  } else if (action.type === INIT_TODO_LIST) {
-    const newState = {...prevState,...{ list: action.list }}
+    const newState = JSON.parse(JSON.stringify(prevState))
+    newState.list.splice(action.index, 1) 
     return newState
   }
   return prevState

@@ -1,29 +1,17 @@
-import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DEL_TODO_ITEM, INIT_TODO_LIST, GET_INIT_TODO_LIST } from './actionTypes'
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DEL_TODO_ITEM } from './actionTypes'
 
-
-const getInputChangeAction = (value) => ({
+const changeInputValAction = (value) => ({
   type: CHANGE_INPUT_VALUE,
   value
 })
 
-const getAddTodoItemAction = (value) => ({
-  type: ADD_TODO_ITEM,
-  value
+const addTodoItemAction = () => ({
+  type: ADD_TODO_ITEM
 })
 
-const getDelTodoItemAction = (index) => ({
+const delTodoItemAction = (index) => ({
   type: DEL_TODO_ITEM,
   index
 })
 
-const initTodoListAction = (list) => ({
-  type: INIT_TODO_LIST,
-  list
-})
-
-const getInitTodoListAction = () => ({
-  type: GET_INIT_TODO_LIST
-})
-
-
-export { getInputChangeAction, getAddTodoItemAction, getDelTodoItemAction, initTodoListAction, getInitTodoListAction }
+export { changeInputValAction, addTodoItemAction, delTodoItemAction }
