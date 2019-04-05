@@ -6,7 +6,7 @@ const defaultState = {
 }
 
 // reducer可以接收state,但绝不能修改state
-export default (prevState = defaultState, action) => {
+function todo(prevState = defaultState, action) {
   if(action.type === CHANGE_INPUT_VALUE) {
     const newState = {...prevState, ...action.value}
     newState.inputVal = action.value
@@ -23,3 +23,5 @@ export default (prevState = defaultState, action) => {
   }
   return prevState
 }
+
+export default todo
