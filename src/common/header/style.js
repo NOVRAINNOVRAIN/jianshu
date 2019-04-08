@@ -44,6 +44,22 @@ const NavItem = styled.div`
   font-size: 17px;
 `
 
+const NavSearchWrapper = styled.div`
+  position: relative;
+  float: left;
+  background: red;
+  .iconfont{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 15px;
+    text-align: center;
+  }
+`
+
 const NavSearch = styled.input.attrs({
   placeholder: '搜索'
 })`
@@ -85,4 +101,4 @@ const Button = styled.div`
   }
 `
 
-export  { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button }
+export  { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, Addition, Button }

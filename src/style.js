@@ -195,4 +195,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export { GlobalStyle }
+export { GlobalStyle } 
