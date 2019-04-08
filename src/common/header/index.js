@@ -36,7 +36,7 @@ const Header = (props) => {
 
 
 const mapStateToProps = (state) => ({
-  focus: state.header.focus 
+  focus: state.header.get('focus') 
 })
 
 const mapDispatchToProps = (dispatch) => {

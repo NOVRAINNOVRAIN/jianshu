@@ -1,14 +1,15 @@
 import { CHANGE_INPUT_FOCUS, CHANGE_INPUT_BLUR } from './actionTypes'
+import { fromJS } from 'immutable'
 
-const defaultState = {
+const defaultState = fromJS({
   focus: false
-}
+})
 
 const reducer = (state=defaultState, action) => {
   if(action.type === CHANGE_INPUT_FOCUS) {
-    return { focus: true }
+    return state.set('focus', true)
   } else if (action.type === CHANGE_INPUT_BLUR) {
-    return { focus: false }
+    return state.set('focus', false)
   }
 
   return state
