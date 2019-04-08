@@ -55,3 +55,9 @@ npm i redux
 ### react-redux
 Provider
 connect
+
+### redux 模块划分
+
+### immutable、redux-immutable
+npm i immutable
+npm i redux-immutable
