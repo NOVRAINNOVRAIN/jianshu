@@ -99,6 +99,43 @@ const NavSearch = styled.input.attrs({
   }
 `
 
+const SearchInfo = styled.div`
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 240px;
+  padding: 0 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,.2);
+`
+
+const SearchInfoTitle = styled.div`
+  margin: 20px 0 15px 0;
+  line-height: 20px;
+  color: #969696;
+  font-size: 14px;
+`
+
+const SearchInfoTitleSwitch = styled.span`
+  float: right;
+  font-size: 13px;
+`
+
+const SearchInfoList = styled.div`
+  overflow: hidden;
+`
+
+const SearchInfoItem = styled.a`
+  display: block;
+  float: left;
+  padding: 0 5px;
+  line-height: 20px;
+  margin: 5px 10px 0 0 ;
+  color: #787878;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+`
+
 const Addition = styled.div`
   position: absolute;
   right: 0;
@@ -122,4 +159,4 @@ const Button = styled.div`
   }
 `
 
-export  { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, Addition, Button }
+export  { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, SearchInfo, SearchInfoTitle, SearchInfoTitleSwitch, SearchInfoList, SearchInfoItem, Addition, Button }

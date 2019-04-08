@@ -1,8 +1,30 @@
 import React from 'react'
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, Addition, Button } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, SearchInfo, SearchInfoTitle, SearchInfoTitleSwitch, SearchInfoList, SearchInfoItem, Addition, Button } from './style'
 import { CSSTransition} from 'react-transition-group'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
+
+const getSearchInfo = (show) => {
+  if(show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitle>
+          热门搜索
+          <SearchInfoTitleSwitch>换一批</SearchInfoTitleSwitch>
+          <SearchInfoList>
+            <SearchInfoItem>区块链</SearchInfoItem>
+            <SearchInfoItem>小程序</SearchInfoItem>
+            <SearchInfoItem>React</SearchInfoItem>
+            <SearchInfoItem>Redux</SearchInfoItem>
+            <SearchInfoItem>Immutable</SearchInfoItem>
+          </SearchInfoList>
+        </SearchInfoTitle>
+      </SearchInfo>
+    )
+  } else {
+    return null
+  }
+}
 
 const Header = (props) => {
   const { focus, handleInputFocus, handleInputBlur } = props
@@ -21,6 +43,7 @@ const Header = (props) => {
             <NavSearch onFocus={handleInputFocus} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
           </CSSTransition>
           <i className={focus? 'focused iconfont': 'iconfont'}>&#xe62d;</i>
+          {getSearchInfo(focus)}
         </NavSearchWrapper>
         <Addition>
           <Button className='writting'>
