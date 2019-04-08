@@ -61,3 +61,5 @@ connect
 ### immutable、redux-immutable
 npm i immutable
 npm i redux-immutable
+
+### reudx-thunk/redux-saga
