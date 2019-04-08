@@ -2,7 +2,7 @@ import React from 'react'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, Addition, Button } from './style'
 import { CSSTransition} from 'react-transition-group'
 import { connect } from 'react-redux'
-import { changeInputFocusAction, changeInputBlurAction } from '../../store/actionCreators'
+import { changeInputFocusAction, changeInputBlurAction } from './store/actionCreators'
 
 const Header = (props) => {
   const { focus, handleInputFocus, handleInputBlur } = props
@@ -36,19 +36,19 @@ const Header = (props) => {
 
 
 const mapStateToProps = (state) => ({
-  focus: state.focus 
+  focus: state.header.focus 
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus() {      
+    handleInputFocus() {   
       const action = changeInputFocusAction()
       dispatch(action)
     },
-    handleInputBlur() {      
+    handleInputBlur() {    
       const action = changeInputBlurAction()
       dispatch(action)
-    },
+    }
   }
 }
 
