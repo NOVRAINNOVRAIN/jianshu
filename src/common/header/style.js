@@ -47,7 +47,6 @@ const NavItem = styled.div`
 const NavSearchWrapper = styled.div`
   position: relative;
   float: left;
-  background: red;
   .iconfont{
     position: absolute;
     width: 30px;
@@ -57,6 +56,24 @@ const NavSearchWrapper = styled.div`
     bottom: 5px;
     border-radius: 15px;
     text-align: center;
+    &.focused{
+      color: #fff;
+      background: #777;
+    }
+  }
+  .slide-enter{
+    width: 160px;
+    transition: all 0.2s ease-out;
+  }
+  .slide-enter-active{
+    width: 240px;
+  }
+  .slide-exit{
+    width: 240px;
+    transition: all 0.2s ease-in;
+  }
+  .slide-exit-active{
+    width: 160px;
   }
 `
 
@@ -66,15 +83,19 @@ const NavSearch = styled.input.attrs({
   width: 160px;
   height: 38px;
   margin: 9px 0 0 20px;
-  padding: 0 20px;
+  padding: 0 30px 0 20px;
   box-sizing: border-box;
   border: none;
   outline: none;
   border-radius: 19px;
   background: #eee;
+  color: #666;
   font-size: 14px;
   &::placeholder {
     color: #999;
+  }
+  &.focused {
+    width: 240px;
   }
 `
 
