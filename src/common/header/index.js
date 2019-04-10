@@ -77,11 +77,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus() {   
-      const action1 = actionCreators.getHotSearchListAction()
-      dispatch(action1)
+    handleInputFocus() {  
       const action = actionCreators.changeInputFocusAction()
-      dispatch(action)
+      dispatch(action) 
+      const action2 = actionCreators.getHotSearchListAction()
+      dispatch(action2)
+      
     },
     handleInputBlur() {    
       const action = actionCreators.changeInputBlurAction()

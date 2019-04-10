@@ -1,18 +1,20 @@
 import axios from 'axios'
 import { fromJS } from 'immutable'
-import { CHANGE_INPUT_FOCUS, CHANGE_INPUT_BLUR, GET_HOTSEARCH_LIST, CHANGE_HOTSEARCH_LIST } from './actionTypes'
+import { CHANGE_INPUT_FOCUS, CHANGE_INPUT_BLUR, CHANGE_HOTSEARCH_LIST } from './actionTypes'
 
+// self
+const changeHotSearchListAction = (data) => ({
+  type: CHANGE_HOTSEARCH_LIST,
+  data: fromJS(data)
+})
+
+// export
 const changeInputFocusAction = () => ({
   type: CHANGE_INPUT_FOCUS
 })
 
 const changeInputBlurAction = () => ({
   type: CHANGE_INPUT_BLUR
-})
-
-const changeHotSearchListAction = (data) => ({
-  type: CHANGE_HOTSEARCH_LIST,
-  data: fromJS(data)
 })
 
 const getHotSearchListAction = () => {

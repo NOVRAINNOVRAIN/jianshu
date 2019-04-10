@@ -7,15 +7,16 @@ const defaultState = fromJS({
 })
 
 const reducer = (state=defaultState, action) => {
-  if(action.type === CHANGE_INPUT_FOCUS) {
-    return state.set('focus', true)
-  } else if (action.type === CHANGE_INPUT_BLUR) {
-    return state.set('focus', false)
-  } else if (action.type === CHANGE_HOTSEARCH_LIST) {
-    return state.set('list', action.data)
+  switch(action.type) {
+    case CHANGE_INPUT_FOCUS:
+      return state.set('focus', true)
+    case CHANGE_INPUT_BLUR:
+      return state.set('focus', false)
+    case CHANGE_HOTSEARCH_LIST:
+      return state.set('list', action.data)
+    default:
+      return state
   }
-
-  return state
 }
 
 
