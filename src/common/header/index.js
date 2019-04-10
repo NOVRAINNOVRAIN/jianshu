@@ -20,7 +20,7 @@ class Header extends Component {
     for(let i = (page-1) * 10, len = page * 10;  i < Math.min(len, newList.length); i++) {
       pageList.push(newList[i])
     }
-    if(show || 1) {
+    if(show) {
       return (
         <SearchInfo onMouseEnter={handleSearchMouseEnter} onMouseLeave={handleSearchMouseLeave}>
           <SearchInfoTitle>
@@ -47,7 +47,7 @@ class Header extends Component {
   }
   
   render() {
-    const { focus, handleInputFocus, handleInputBlur } = this.props
+    const { focus, list, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
         <Logo />
@@ -60,7 +60,7 @@ class Header extends Component {
           <NavItem className='right'>登录</NavItem>
           <NavSearchWrapper>
             <CSSTransition in={focus} timeout={200} classNames='slide'>
-              <NavSearch onFocus={handleInputFocus} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
+              <NavSearch onFocus={() => {handleInputFocus(list)}} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
             </CSSTransition>
             <i className={focus? 'focused iconfont zoom': 'iconfont zoom'}>&#xe62d;</i>
             {this.getSearchInfo()}
@@ -91,11 +91,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus() {  
+    handleInputFocus(list) {  
       const action = actionCreators.changeInputFocusAction()
       dispatch(action) 
       const action2 = actionCreators.getHotSearchListAction()
-      dispatch(action2)
+      // 避免不必要的ajax请求   && 优先级 比 <、=== 优先级低
+      list.size < 1 && dispatch(action2)
     },
     handleInputBlur() {    
       const action = actionCreators.changeInputBlurAction()
