@@ -105,6 +105,7 @@ const SearchInfo = styled.div`
   left: 0;
   width: 240px;
   padding: 0 20px;
+  height: auto;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
 `
 
@@ -118,6 +119,7 @@ const SearchInfoTitle = styled.div`
 const SearchInfoTitleSwitch = styled.span`
   float: right;
   font-size: 13px;
+  cursor: pointer;
 `
 
 const SearchInfoList = styled.div`

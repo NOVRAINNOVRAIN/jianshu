@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { fromJS } from 'immutable'
-import { CHANGE_INPUT_FOCUS, CHANGE_INPUT_BLUR, CHANGE_HOTSEARCH_LIST } from './actionTypes'
+import { CHANGE_INPUT_FOCUS, CHANGE_INPUT_BLUR, CHANGE_HOTSEARCH_LIST, CHANGE_SEARCH_MOUSEIN, CAHNGE_SEARCH_PAGE } from './actionTypes'
 
 // self
 const changeHotSearchListAction = (data) => ({
   type: CHANGE_HOTSEARCH_LIST,
-  data: fromJS(data)
+  data: fromJS(data),
+  totalPage: fromJS(Math.ceil(data.length / 10))
 })
 
 // export
@@ -15,6 +16,16 @@ const changeInputFocusAction = () => ({
 
 const changeInputBlurAction = () => ({
   type: CHANGE_INPUT_BLUR
+})
+
+const changeSearchMouseInAction = (flag) => ({
+  type: CHANGE_SEARCH_MOUSEIN,
+  flag: fromJS(flag)
+})
+
+const changeSearchPageAction = (page, totalPage) => ({
+  type: CAHNGE_SEARCH_PAGE,
+  page: fromJS(page)
 })
 
 const getHotSearchListAction = () => {
@@ -32,4 +43,4 @@ const getHotSearchListAction = () => {
 }
 
 
-export { changeInputFocusAction, changeInputBlurAction, getHotSearchListAction }
+export { changeInputFocusAction, changeInputBlurAction, getHotSearchListAction, changeSearchMouseInAction, changeSearchPageAction }

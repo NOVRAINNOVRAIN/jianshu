@@ -11,16 +11,25 @@ class Header extends Component {
     this.getSearchInfo = this.getSearchInfo.bind(this)
   }
 
-  getSearchInfo(show, list) {
+  getSearchInfo() {
+    const { focus, mouseIn, list, page, totalPage, handleSearchMouseEnter, handleSearchMouseLeave, hanleSearchPageChange } = this.props
+    const show = focus || mouseIn
+    let pageList = []
+    let newList = list.toJS()
+    // 取 len 和 newList.length 的 较小值，避免多余的渲染
+    for(let i = (page-1) * 10, len = page * 10;  i < Math.min(len, newList.length); i++) {
+      pageList.push(newList[i])
+    }
     if(show) {
       return (
-        <SearchInfo>
+        <SearchInfo onMouseEnter={handleSearchMouseEnter} onMouseLeave={handleSearchMouseLeave}>
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoTitleSwitch>换一批</SearchInfoTitleSwitch>
+            {/* <SearchInfoTitleSwitch onClick={() => hanleSearchPageChange(page, totalPage)}>换一批</SearchInfoTitleSwitch> */}
+            <SearchInfoTitleSwitch onClick={hanleSearchPageChange.bind(this, page, totalPage)}>换一批</SearchInfoTitleSwitch>
             <SearchInfoList>
               {
-                list.map((item, index) => {
+                pageList.map((item, index) => {
                   return (
                     <SearchInfoItem key={index}>{item}</SearchInfoItem>
                   )
@@ -36,7 +45,7 @@ class Header extends Component {
   }
   
   render() {
-    const { focus, list, handleInputFocus, handleInputBlur } = this.props
+    const { focus, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
         <Logo />
@@ -52,7 +61,7 @@ class Header extends Component {
               <NavSearch onFocus={handleInputFocus} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
             </CSSTransition>
             <i className={focus? 'focused iconfont': 'iconfont'}>&#xe62d;</i>
-            {this.getSearchInfo(focus, list)}
+            {this.getSearchInfo()}
           </NavSearchWrapper>
           <Addition>
             <Button className='writting'>
@@ -72,7 +81,10 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   focus: state.get('header').get('focus'),
-  list: state.get('header').get('list') 
+  mouseIn: state.get('header').get('mouseIn'),
+  list: state.get('header').get('list'),
+  page: state.get('header').get('page'),
+  totalPage: state.get('header').get('totalPage') 
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -82,10 +94,26 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(action) 
       const action2 = actionCreators.getHotSearchListAction()
       dispatch(action2)
-      
     },
     handleInputBlur() {    
       const action = actionCreators.changeInputBlurAction()
+      dispatch(action)
+    },
+    handleSearchMouseEnter() {
+      const action = actionCreators.changeSearchMouseInAction(true)
+      dispatch(action)
+    },
+    handleSearchMouseLeave() {
+      const action = actionCreators.changeSearchMouseInAction(false)
+      dispatch(action)
+    },
+    hanleSearchPageChange(page, totalPage) {
+      if(page < totalPage) {
+        page++
+      } else {
+        page = 1
+      }
+      const action = actionCreators.changeSearchPageAction(page, totalPage)
       dispatch(action)
     }
   }
