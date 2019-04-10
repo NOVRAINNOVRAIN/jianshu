@@ -47,7 +47,7 @@ const NavItem = styled.div`
 const NavSearchWrapper = styled.div`
   position: relative;
   float: left;
-  .iconfont{
+  .zoom{
     position: absolute;
     width: 30px;
     height: 30px;
@@ -120,6 +120,14 @@ const SearchInfoTitleSwitch = styled.span`
   float: right;
   font-size: 13px;
   cursor: pointer;
+  .spin{
+    display: inline-block;
+    margin: 0 2px 0 0;
+    font-size: 12px;
+    transition: all 0.2s ease-in;
+    transform: rotate(0deg);
+    transform-origin: center center;
+  }
 `
 
 const SearchInfoList = styled.div`

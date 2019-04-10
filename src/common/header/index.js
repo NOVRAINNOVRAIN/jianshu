@@ -20,13 +20,15 @@ class Header extends Component {
     for(let i = (page-1) * 10, len = page * 10;  i < Math.min(len, newList.length); i++) {
       pageList.push(newList[i])
     }
-    if(show) {
+    if(show || 1) {
       return (
         <SearchInfo onMouseEnter={handleSearchMouseEnter} onMouseLeave={handleSearchMouseLeave}>
           <SearchInfoTitle>
             热门搜索
             {/* <SearchInfoTitleSwitch onClick={() => hanleSearchPageChange(page, totalPage)}>换一批</SearchInfoTitleSwitch> */}
-            <SearchInfoTitleSwitch onClick={hanleSearchPageChange.bind(this, page, totalPage)}>换一批</SearchInfoTitleSwitch>
+            <SearchInfoTitleSwitch onClick={hanleSearchPageChange.bind(this, page, totalPage, this.spinIcon)}>
+              <i ref={(spin) => {this.spinIcon = spin}} className='iconfont spin'>&#xe851;</i>换一批
+            </SearchInfoTitleSwitch>
             <SearchInfoList>
               {
                 pageList.map((item, index) => {
@@ -60,7 +62,7 @@ class Header extends Component {
             <CSSTransition in={focus} timeout={200} classNames='slide'>
               <NavSearch onFocus={handleInputFocus} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
             </CSSTransition>
-            <i className={focus? 'focused iconfont': 'iconfont'}>&#xe62d;</i>
+            <i className={focus? 'focused iconfont zoom': 'iconfont zoom'}>&#xe62d;</i>
             {this.getSearchInfo()}
           </NavSearchWrapper>
           <Addition>
@@ -107,12 +109,17 @@ const mapDispatchToProps = (dispatch) => {
       const action = actionCreators.changeSearchMouseInAction(false)
       dispatch(action)
     },
-    hanleSearchPageChange(page, totalPage) {
-      if(page < totalPage) {
-        page++
+    hanleSearchPageChange(page, totalPage, spinIcon) {
+      // 换页图标旋转动画效果
+      let originAngel = spinIcon.style.transform.replace(/\D/ig, '') //  或者 [^0-9]
+      if(originAngel) {
+        originAngel = parseInt(originAngel, 10)
       } else {
-        page = 1
+        originAngel = 0
       }
+      spinIcon.style.transform = 'rotate('+ (originAngel + 360) +'deg)'
+      
+      page < totalPage ? page ++ : page =1
       const action = actionCreators.changeSearchPageAction(page, totalPage)
       dispatch(action)
     }
