@@ -63,3 +63,15 @@ npm i immutable
 npm i redux-immutable
 
 ### reudx-thunk/redux-saga
+
+
+### npm install react-router-dom
+```JavaScript
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+<Router>
+  <Route path='/' exact cmponent={Home}></Route>
+  <Route path='/about/' exact cmponent={About}></Route>
+</Router>
+```
+

@@ -4,6 +4,7 @@ import GlobalIconfontStyle from './statics/iconfont/iconfont'
 import Header from './common/header'
 import { Provider } from 'react-redux'
 import store from './store'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -12,6 +13,10 @@ class App extends Component {
         <GlobalStyle />
         <GlobalIconfontStyle />
         <Header/>
+        <Router>
+          <Route path='/' exact render={()=> <div>Home</div>}></Route>
+          <Route path='/detail' render={()=> <div>Detail</div>}></Route>
+        </Router>
       </Provider>
     );
   }
