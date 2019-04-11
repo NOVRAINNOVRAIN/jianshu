@@ -28,6 +28,7 @@ const HomeRight = styled.div`
 const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
   margin: 0 0 0 -18px;
+  border-bottom: 1px solid #dcdcdc;
   overflow: hidden;
 `
 const TopicItem = styled.div`
@@ -48,6 +49,37 @@ const TopicItem = styled.div`
     margin: 0 10px 0 0;
   }
 `
+// List
+const ListItem = styled.div`
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+  overflow: hidden;
+  .pic{
+    display: block;
+    float: right;
+    width: 125px;
+    height: 100px;
+    border-radius: 10px;
+  }
+`
+const ListInfo = styled.div`
+  float: left;
+  width: 500px;
+  .title{
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  .desc{
+    line-height: 24px;
+    color: #999;
+    font-size: 13px;
+  }
+`
 
-
-export { HomeWrapper, HomeLeft, HomeRight, TopicWrapper, TopicItem }
+export { 
+  HomeWrapper, HomeLeft, HomeRight, 
+  TopicWrapper, TopicItem,
+  ListItem, ListInfo
+ }
