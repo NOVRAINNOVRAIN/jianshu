@@ -33,6 +33,16 @@ const defaultState = fromJS({
         desc: '之前大家问过鱼骨图应该怎么使用，如何在PPT中更好的表现出来。 对于鱼骨图的使用确实是一个很好的元素，一旦用好不仅能让页面逻辑关系清晰还能丰富页...',
         imgUrl: '//upload-images.jianshu.io/upload_images/5369363-7ad0b2f6aa174237.png?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240'
       },
+    ],
+    recommendList: [
+      {
+        id: 1,
+        imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png'
+      },
+      {
+        id: 2,
+        imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
+      }
     ]
 })
 

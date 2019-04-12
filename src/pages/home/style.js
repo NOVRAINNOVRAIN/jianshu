@@ -19,7 +19,7 @@ const HomeLeft = styled.div`
 
 const HomeRight = styled.div`
   float: right;
-  width: 240px;
+  width: 280px;
   margin: 0 0 0 15px;
   padding: 30px 0 0 0;
 `
@@ -78,8 +78,22 @@ const ListInfo = styled.div`
   }
 `
 
+// 
+const RecommendWrapper = styled.div`
+  width: 280px;
+  margin: 30px 0;
+`
+
+const RecommendItem = styled.div`
+  width: 280px;
+  height: 50px;
+  background: url(${(props) => props.imgUrl}) no-repeat;
+  background-size: contain;
+`
+
 export { 
   HomeWrapper, HomeLeft, HomeRight, 
   TopicWrapper, TopicItem,
-  ListItem, ListInfo
+  ListItem, ListInfo,
+  RecommendWrapper, RecommendItem
  }
