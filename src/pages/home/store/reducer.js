@@ -32,7 +32,7 @@ const reducer = (state=defaultState, action) => {
     case CHANGE_HOME_DATA:
       return changeHomeData(state, action)
     case GET_MORE_ARTICLE_LIST:
-      return getMoreArticleList()
+      return getMoreArticleList(state, action)
     case CHANGE_SCROLLTOP_SHOW:
       return state.set('showScroll', action.flag)
     default:  

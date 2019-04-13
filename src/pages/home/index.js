@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style'
 import Topic from './components/Topic'
 import List from './components/List'
@@ -8,7 +8,7 @@ import Writer from './components/Writer'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
 
-class Home extends Component {
+class Home extends PureComponent {
   render() {
     const { showScroll} = this.props
     return (

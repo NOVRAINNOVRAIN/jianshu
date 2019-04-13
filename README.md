@@ -75,3 +75,5 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 </Router>
 ```
 
+### PureComponent
+使用 PureComponent 代替 Component，需要immutable
