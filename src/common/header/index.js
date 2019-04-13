@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, SearchInfo, SearchInfoTitle, SearchInfoTitleSwitch, SearchInfoList, SearchInfoItem, Addition, Button } from './style'
 import { CSSTransition} from 'react-transition-group'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
 
 
-class Header extends Component {
+class Header extends PureComponent {
   constructor(props) {
     super(props)
     this.getSearchInfo = this.getSearchInfo.bind(this)
