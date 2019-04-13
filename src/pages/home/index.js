@@ -5,6 +5,8 @@ import List from './components/List'
 import Recommend from './components/Recommend'
 import Download from './components/Download'
 import Writer from './components/Writer'
+import { connect } from 'react-redux'
+import { actionCreators } from './store'
 
 class Home extends Component {
   render() {
@@ -23,7 +25,23 @@ class Home extends Component {
       </HomeWrapper>
     )
   }
+
+
+  componentDidMount() {
+    const { getHomeData } = this.props
+    getHomeData()
+  }
+
 }
 
 
-export default Home
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getHomeData() {
+      const action = actionCreators.getHomeDataAction()
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Home)
