@@ -4,7 +4,7 @@ import GlobalIconfontStyle from './statics/iconfont/iconfont'
 import Header from './common/header'
 import { Provider } from 'react-redux'
 import store from './store'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Detail from './pages/detail'
 
@@ -14,8 +14,8 @@ class App extends PureComponent {
       <Provider store={store}>
         <GlobalStyle />
         <GlobalIconfontStyle />
-        <Header/>
         <Router>
+          <Header />
           <Route path='/' exact component={Home}></Route>
           <Route path='/detail' component={Detail}></Route>
         </Router>
