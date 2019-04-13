@@ -78,6 +78,20 @@ const ListInfo = styled.div`
   }
 `
 
+const LoadMore = styled.div`
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background: #a5a5a5;
+  text-align: center;
+  margin: 30px 0;
+  font-size: 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  cursor: pointer;
+`
+
 // Recommend
 const RecommendWrapper = styled.div`
   width: 280px;
@@ -105,7 +119,7 @@ const WriterWrapper = styled.div`
 export { 
   HomeWrapper, HomeLeft, HomeRight, 
   TopicWrapper, TopicItem,
-  ListItem, ListInfo,
+  ListItem, ListInfo, LoadMore,
   RecommendWrapper, RecommendItem,
   WriterWrapper
  }
