@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { HomeWrapper, HomeLeft, HomeRight } from './style'
+import React, { Component, Fragment } from 'react'
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style'
 import Topic from './components/Topic'
 import List from './components/List'
 import Recommend from './components/Recommend'
@@ -10,6 +10,7 @@ import { actionCreators } from './store'
 
 class Home extends Component {
   render() {
+    const { showScroll} = this.props
     return (
       <HomeWrapper>
         <HomeLeft>
@@ -22,26 +23,57 @@ class Home extends Component {
           <Download></Download>
           <Writer></Writer>
         </HomeRight>
+        <Fragment>
+          { this.showBackTop(showScroll) }
+        </Fragment>
       </HomeWrapper>
     )
   }
 
 
   componentDidMount() {
-    const { getHomeData } = this.props
-    getHomeData()
+    this.props.getHomeData()
+    this.bindScrollEvent()
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
+  handleScrollTop() {
+    window.scrollTo(0, 0)
+  }
+
+  bindScrollEvent() {
+    window.addEventListener('scroll', this.props.changeScrollTopShow)
+  }
+
+  showBackTop(showScroll) {
+    return showScroll ?  <BackTop onClick={this.handleScrollTop}>^</BackTop> : null
+  }
 }
 
+const mapStateToProps = (state) => ({
+  showScroll: state.getIn(['home', 'showScroll'])
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getHomeData() {
       const action = actionCreators.getHomeDataAction()
       dispatch(action)
+    },
+    changeScrollTopShow(e) {
+      const top = document.documentElement.scrollTop
+      if (top>100) {
+        const action = actionCreators.toggleScrollTopShowAction(true)
+        dispatch(action)
+      } else {
+        const action = actionCreators.toggleScrollTopShowAction(false)
+        dispatch(action)
+      }
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CHANGE_HOME_DATA, GET_MORE_ARTICLE_LIST } from './actionTypes'
+import { CHANGE_HOME_DATA, GET_MORE_ARTICLE_LIST, CHANGE_SCROLLTOP_SHOW } from './actionTypes'
 
 // self
 const getHomeDataActionIn = (data) => ({
@@ -39,4 +39,9 @@ const getMoreACticleListAction = (page) => {
   }
 }
 
-export { getHomeDataAction, getMoreACticleListAction }
+const toggleScrollTopShowAction = (flag) => ({
+  type: CHANGE_SCROLLTOP_SHOW,
+  flag
+})
+
+export { getHomeDataAction, getMoreACticleListAction, toggleScrollTopShowAction }

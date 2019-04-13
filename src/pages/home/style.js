@@ -115,11 +115,26 @@ const WriterWrapper = styled.div`
   border-radius: 3px;
   box-sizing: border-box;
 `
+// BackTop
+const BackTop = styled.div`
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: #777;
+  font-size: 24px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+`
 
 export { 
   HomeWrapper, HomeLeft, HomeRight, 
   TopicWrapper, TopicItem,
   ListItem, ListInfo, LoadMore,
   RecommendWrapper, RecommendItem,
-  WriterWrapper
+  WriterWrapper,
+  BackTop
  }
