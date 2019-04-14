@@ -3,6 +3,7 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearchWrapper, NavSearch, SearchI
 import { CSSTransition} from 'react-transition-group'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
 import { Link } from 'react-router-dom'
 
 class Header extends PureComponent {
@@ -47,7 +48,7 @@ class Header extends PureComponent {
   }
   
   render() {
-    const { focus, list, handleInputFocus, handleInputBlur } = this.props
+    const { focus, list, login, handleInputFocus, handleInputBlur, handleLogout } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -59,7 +60,11 @@ class Header extends PureComponent {
           <NavItem className='right'>
             <i className="iconfont">&#xe636;</i>
           </NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ? 
+            <NavItem className='right' onClick={handleLogout}>退出</NavItem>:
+            <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+          }
           <NavSearchWrapper>
             <CSSTransition in={focus} timeout={200} classNames='slide'>
               <NavSearch onFocus={() => {handleInputFocus(list)}} onBlur={handleInputBlur} className={focus? 'focused': ''}></NavSearch>
@@ -88,7 +93,8 @@ const mapStateToProps = (state) => ({
   mouseIn: state.get('header').get('mouseIn'),
   list: state.get('header').get('list'),
   page: state.get('header').get('page'),
-  totalPage: state.get('header').get('totalPage') 
+  totalPage: state.get('header').get('totalPage'),
+  login: state.getIn(['login', 'login']) 
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -124,6 +130,10 @@ const mapDispatchToProps = (dispatch) => {
       
       page < totalPage ? page ++ : page =1
       const action = actionCreators.changeSearchPageAction(page, totalPage)
+      dispatch(action)
+    },
+    handleLogout() {
+      const action = loginActionCreators.logoutAction()
       dispatch(action)
     }
   }
