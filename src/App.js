@@ -7,6 +7,7 @@ import store from './store'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Detail from './pages/detail'
+import Login from './pages/login'
 
 class App extends PureComponent {
   render() {
@@ -17,6 +18,7 @@ class App extends PureComponent {
         <Router>
           <Header />
           <Route path='/' exact component={Home}></Route>
+          <Route path='/login' component={Login}></Route>
           <Route path='/detail/:id' component={Detail}></Route>
         </Router>
       </Provider>

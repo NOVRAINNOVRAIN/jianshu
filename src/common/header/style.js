@@ -106,6 +106,7 @@ const SearchInfo = styled.div`
   height: auto;
   background: #fff;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
+  z-index: 1;
 `
 
 const SearchInfoTitle = styled.div`
