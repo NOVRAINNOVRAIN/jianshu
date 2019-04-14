@@ -6,6 +6,7 @@ import { actionCreators } from './store'
 class Detail extends PureComponent {
   render() {
     const { title, content } = this.props
+
     return (
       <Detailwrapper>
         <Header>{title}</Header>
@@ -15,7 +16,8 @@ class Detail extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.getDetailInfo()
+    const id = this.props.match.params.id
+    this.props.getDetailInfo(id)
   }
 }
 
@@ -27,8 +29,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDetailInfo() {
-      const action = actionCreators.getDetailInfoAction()
+    getDetailInfo(id) {
+      const action = actionCreators.getDetailInfoAction(id)
       dispatch(action)
     }
   }

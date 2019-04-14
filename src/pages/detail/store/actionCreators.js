@@ -10,9 +10,9 @@ const getDetailInfoActionIn = (data) => ({
 
 
 // export
-const getDetailInfoAction = () => {
+const getDetailInfoAction = (id) => {
   return (dispatch) => {
-    axios.get('https://easy-mock.com/mock/5ca47d2fac5abe5a8d89b977/react/api/get_detail_info')
+    axios.get('https://easy-mock.com/mock/5ca47d2fac5abe5a8d89b977/react/api/get_detail_info?id=' + id)
       .then(res => {
         const data = res.data.data
         const action = getDetailInfoActionIn(data)
