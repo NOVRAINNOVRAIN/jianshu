@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Detailwrapper, Header, Content } from './style'
-
+import { actionCreators } from './store'
 
 class Detail extends PureComponent {
   render() {
@@ -13,6 +13,10 @@ class Detail extends PureComponent {
       </Detailwrapper>
     )
   }
+
+  componentDidMount() {
+    this.props.getDetailInfo()
+  }
 }
 
 
@@ -21,4 +25,13 @@ const mapStateToProps = (state) => ({
   content: state.getIn(['detail', 'content']),
 })
 
-export default connect(mapStateToProps, null)(Detail)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDetailInfo() {
+      const action = actionCreators.getDetailInfoAction()
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)
