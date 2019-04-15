@@ -77,3 +77,35 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 ### PureComponent
 使用 PureComponent 代替 Component，需要immutable
+
+
+### npm i react-loadable 异步组件和withRouter
+```JavaScript
+// /pages/detail/loadable.js
+import Loadable from 'react-loadable'
+
+const LoadableComponent = Loadable({
+  loader: () => import('./index'),
+  loading: Loading  // loading 效果
+})
+
+const Loading = () => {
+  return <div>loading...</div>
+}
+
+
+export default () => <LoadableComponent />
+
+
+// /pages/detail/index.js
+import { withRouter } from 'react-router-dom'
+
+export default connent(null, null)(withRouter(Detail))
+
+
+// App.js
+// import Home from './pages/detail'
+// 替换为
+import Detail from './pages/detail/loadable'
+```
+
