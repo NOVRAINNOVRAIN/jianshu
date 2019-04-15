@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Detail from './pages/detail'
 import Login from './pages/login'
+import Write from './pages/write'
 
 class App extends PureComponent {
   render() {
@@ -20,6 +21,7 @@ class App extends PureComponent {
           <Route path='/' exact component={Home}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/detail/:id' component={Detail}></Route>
+          <Route path='/write' component={Write}></Route>
         </Router>
       </Provider>
     );

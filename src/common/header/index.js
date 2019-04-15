@@ -73,10 +73,12 @@ class Header extends PureComponent {
             {this.getSearchInfo()}
           </NavSearchWrapper>
           <Addition>
-            <Button className='writting'>
-              <i className="iconfont">&#xe615;</i>
-              写文章
-            </Button>
+            <Link to='/write'>
+              <Button className='writting'>
+                <i className="iconfont">&#xe615;</i>
+                写文章
+              </Button>
+            </Link>
             <Button className='reg'>注册</Button>
           </Addition>
         </Nav>
